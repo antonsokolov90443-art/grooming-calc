@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор Груминга</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
+        body { 
+            background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 100%);
+            color: #f8fafc; 
+            font-family: 'Montserrat', sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            margin: 0; 
+            padding: 20px; 
+            box-sizing: border-box; 
+        }
+        
+        .calc-box { 
+            background-color: #1e293b; 
+            padding: 30px; 
+            border-radius: 24px; 
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(139, 92, 246, 0.2); 
+            width: 100%; 
+            max-width: 420px; 
+            border: 1px solid #4c1d95; 
+        }
+        
+        h2 { 
+            text-align: center; 
+            color: #a78bfa; 
+            margin-top: 0; 
+            margin-bottom: 25px; 
+            font-size: 26px; 
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        
+        .input-group { margin-bottom: 20px; }
+        
+        label { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-size: 14px; 
+            color: #94a3b8; 
+            font-weight: 600;
+        }
+        
+        select { 
+            width: 100%; 
+            padding: 14px; 
+            border-radius: 12px; 
+            border: 2px solid #334155; 
+            background-color: #0f172a; 
+            color: #fff; 
+            font-size: 16px; 
+            box-sizing: border-box; 
+            outline: none;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+        }
+        
+        select:focus { border-color: #8b5cf6; }
+
+        .services-title {
+            font-size: 16px;
+            color: #fff;
+            margin: 25px 0 15px 0;
+            font-weight: 600;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 8px;
+        }
+
+        .service { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 12px; 
+            background: #0f172a; 
+            padding: 14px; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            transition: 0.2s; 
+            border: 1px solid transparent; 
+        }
+        
+        .service:hover { border: 1px solid #8b5cf6; background: #1e293b; }
+        
+        .service span { font-size: 15px; display: flex; align-items: center; gap: 12px; }
+        
+        input[type="checkbox"] { 
+            width: 22px; 
+            height: 22px; 
+            accent-color: #8b5cf6; 
+            cursor: pointer; 
+        }
+
+        button { 
+            width: 100%; 
+            padding: 18px; 
+            background: linear-gradient(90deg, #8b5cf6, #6d28d9); 
+            color: #fff; 
+            border: none; 
+            border-radius: 12px; 
+            font-size: 18px; 
+            font-weight: 800; 
+            cursor: pointer; 
+            margin-top: 25px; 
+            transition: 0.3s; 
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+        }
+        
+        button:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
+        }
+        
+        .result-box { 
+            background: #0f172a; 
+            margin-top: 25px; 
+            padding: 20px; 
+            border-radius: 16px; 
+            text-align: center; 
+            border: 2px solid #8b5cf6; 
+        }
+        
+        .result-title { font-size: 14px; color: #94a3b8; margin-bottom: 8px; font-weight: 600; }
+        .result { font-size: 32px; font-weight: 800; color: #a78bfa; text-shadow: 0 0 20px rgba(167, 139, 250, 0.4); }
+    </style>
+</head>
+<body>
+    <div class="calc-box">
+        <h2>✂️ Груминг-Салон</h2>
+        
+        <div class="input-group">
+            <label>Размер и тип животного:</label>
+            <select id="pet-size">
+                <option value="1500">Маленькая (кошки, йорки, чихуахуа)</option>
+                <option value="2500">Средняя (спаниели, шпицы, корги)</option>
+                <option value="3500">Крупная (овчарки, лабрадоры, хаски)</option>
+                <option value="4500">Гигантская (доги, сенбернары)</option>
+            </select>
+        </div>
+
+        <div class="services-title">Дополнительные услуги:</div>
+        
+        <div class="service" onclick="document.getElementById('hygiene').click()">
+            <span>✂️ Гигиеническая стрижка (лапы, лицо)</span>
+            <input type="checkbox" id="hygiene" value="800">
+        </div>
+        
+        <div class="service" onclick="document.getElementById('haircut').click()">
+            <span>💇‍♀️ Модельная стрижка</span>
+            <input type="checkbox" id="haircut" value="1500">
+        </div>
+        
+        <div class="service" onclick="document.getElementById('nails').click()">
+            <span>💅 Стрижка когтей</span>
+            <input type="checkbox" id="nails" value="500">
+        </div>
+        
+        <div class="service" onclick="document.getElementById('ears').click()">
+            <span>👂 Чистка ушей</span>
+            <input type="checkbox" id="ears" value="400">
+        </div>
+
+        <div class="service" onclick="document.getElementById('teeth').click()">
+            <span>🦷 Чистка зубов</span>
+            <input type="checkbox" id="teeth" value="600">
+        </div>
+
+        <button onclick="calculate()">Рассчитать стоимость</button>
+        
+        <div class="result-box">
+            <div class="result-title">Примерная стоимость:</div>
+            <div class="result" id="total">0 ₽</div>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            // Берем базовую цену в зависимости от размера
+            const basePrice = parseInt(document.getElementById('pet-size').value);
+            let total = basePrice;
+            
+            // Добавляем выбранные доп. услуги
+            if (document.getElementById('hygiene').checked) total += 800;
+            if (document.getElementById('haircut').checked) total += 1500;
+            if (document.getElementById('nails').checked) total += 500;
+            if (document.getElementById('ears').checked) total += 400;
+            if (document.getElementById('teeth').checked) total += 600;
+
+            document.getElementById('total').innerText = total + ' ₽';
+        }
+    </script>
+</body>
+</html>
